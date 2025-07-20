@@ -25,13 +25,20 @@ const [activeFilter, setActiveFilter] = useState<string>("");
 
       {/* Filter section */}
       <div>
-        {FileSystemEntry.map((filter)=>(
+        {filters.map((filter)=>(
           <Pill
           key={filter}
-          label="filter"
+          label={filter}
           isActive ={activeFilter === filter}
-          onClick={()=>setA} />
+          onClick={()=>setActiveFilter(filter)} />
         ))}
+
+        {/* selected filters */}
+        <p className="text-sm text-gray-500">
+          Selected filter:{" "}
+          <span className="font-medium">{activeFilter || "None"} </span>
+        </p>
+
       </div>
     </div>
   )
