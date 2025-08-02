@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Pill from "@/components/common/Pill";
+import { PROPERTYLISTINGSAMPLE } from "@/constants";
+import Link from "next/link";
 
 
 const filters = [
@@ -12,6 +14,9 @@ const filters = [
 
 const Home: React.FC =()=>{
 const [activeFilter, setActiveFilter] = useState<string>("");
+
+const filteredProperties = activeFilter? 
+PROPERTYLISTINGSAMPLE.filter((property)=>property.category.includes(activeFilter)): PROPERTYLISTINGSAMPLE;
 
   return(
     <div className="mt-8">
@@ -38,6 +43,20 @@ const [activeFilter, setActiveFilter] = useState<string>("");
           Selected filter:{" "}
           <span className="font-medium">{activeFilter || "None"} </span>
         </p>
+
+        {/* Property listing */}
+        <div>
+          {filteredProperties.map((item)=>(
+            <div key={item.id}>
+              <img src="" alt="" />
+              <h2>{item.name} </h2>
+              <p>{item.address.city}- {item.address.country}</p>
+              <p>${item.price}/night </p>
+            <Link href={'/'}> </Link>
+
+            </div>
+          ))}
+        </div>
 
       </div>
     </div>

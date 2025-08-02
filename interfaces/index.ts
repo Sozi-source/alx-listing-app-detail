@@ -1,5 +1,7 @@
 export interface PropertyProps{
+  id: number;
   name: string;
+  description?: string;
   address: {
     state: string;
     city: string;
